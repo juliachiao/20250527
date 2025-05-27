@@ -1,0 +1,54 @@
+/* 設定整個視窗背景顏色為淡天空色 */
+body {
+    background-color: #87CEFA; /* 淡天空色 */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 中間淡黃色區域 */
+#app1 {
+    background-color: #FFFACD; /* 淡黃色 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); /* 陰影設定 */
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* 行內排列 */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* 標籤與選單的文字大小 */
+label, select, button {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* 表格樣式 */
+table {
+    margin: 0 auto; /* 表格置中 */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px; /* 表格內文字大小 */
+}
+
+th {
+    background-color: #f4f4f4;
+}
