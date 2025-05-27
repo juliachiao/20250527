@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十三周作業</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+
+</head>
+<body>
+    <div id="app1">
+        <h1>{{ store_name }}</h1>
+        <h2>{{ store_address }}</h2>
+        
+        <!-- 水果選單 -->
+        <div class="row">
+            <label for="fruit-select">選擇水果：</label>
+            <select id="fruit-select" v-model="selectedFruit">
+                <option v-for="fruit in fruits" :value="fruit">
+                    {{ fruit.name }} - {{ fruit.price }}元 - 數量: {{ fruit.num }}
+                </option>
+            </select>
+        </div>
+
+        <!-- 數量選單與按鈕 -->
+        <div class="row">
+            <label for="quantity-select">選擇數量：</label>
+            <select id="quantity-select" v-model="selectedQuantity">
+                <option v-for="n in selectedFruit?.num || 0" :value="n">{{ n }}</option>
+            </select>
+            <button @click="addToCart">採購</button>
+        </div>
+
+        <!-- 採購清單 -->
+        <h3>採購清單</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>水果名稱</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                    <th>金額</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in cart" :key="index">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }} 元</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.totalPrice }} 元</td>
+                    <td><button @click="removeFromCart(index)">刪除</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 總金額 -->
+        <h3>總金額: {{ totalAmount }} 元</h3>
+
+        <!-- 結帳按鈕 -->
+        <button @click="checkout">結帳</button>
+
+        <!-- Email 輸入框 -->
+        <div v-if="showEmailInput" class="email-section">
+            <label for="email">請輸入您的 Email：</label>
+            <input type="email" id="email" v-model="userEmail" placeholder="example@example.com">
+            <button @click="sendEmail">送出</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
